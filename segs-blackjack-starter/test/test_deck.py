@@ -38,21 +38,25 @@ class DeckTestCase(unittest.TestCase):
             self.deck.deal(1)
 
     def test_check_deck_valid(self):
+        """Test that the deck contains all the correct cards with the correct values."""
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+        rank_values = {
+            '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
+            'J': 10, 'Q': 10, 'K': 10, 'A': 1
+        }
 
         # Generate the expected set of cards
-        expected_cards = {f"{rank} of {suit}" for suit in suits for rank in ranks}
+        expected_cards = {(rank, suit, rank_values[rank]) for suit in suits for rank in ranks}
 
         # Get the actual set of cards from the deck
-        actual_cards = {f"{card.rank} of {card.suit}" for card in self.deck.cards}
+        actual_cards = {(card.rank, card.suit, card.val) for card in self.deck.cards}
 
         self.assertEqual(
             actual_cards,
-            expected_cards
+            expected_cards,
+            "The deck should contain all 52 cards with correct values."
         )
-
-
 
 
 if __name__ == '__main__':

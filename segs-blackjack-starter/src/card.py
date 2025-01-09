@@ -10,8 +10,8 @@ class Card:
 
     def assign_val(self):
         if self.rank in ('K', 'Q', 'J'):
-            self.val = 10
+            return 10
         elif self.rank == 'A':
-            self.val = 1
+            return 1
         else:
-            self.val = int(self.rank)
+            return int(self.rank)
