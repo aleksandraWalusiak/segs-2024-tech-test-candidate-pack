@@ -20,8 +20,7 @@ class Deck:
         dealt_cards = []
         if len(self.cards) == 0 or num > len(self.cards):
             raise ValueError(f"Cannot deal {num} cards; only {len(self.cards)} cards available.")
-        else:
-            for _ in range(num):
-                dealt_cards.append(self.cards.pop())
+        for _ in range(num):
+            dealt_cards.append(self.cards.pop())
         return dealt_cards
         

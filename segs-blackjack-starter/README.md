@@ -1,59 +1,60 @@
-## Blackjack Tech Test - Starter Code
+## Blackjack Game - Tech Test
 
-This code is offered as a potential starting point for completing the BBC Software Engineering Graduate Scheme tech test.
-You do **not** have to use this starter code.
+This project implements a simple **Blackjack game** following object-oriented principles, with a focus on key components like the **Deck**, **Player**, **Hand**, and **Game** classes. The game includes mechanics for dealing cards, player actions (hit/stand), and determining the winner(s). It supports multiple players and handles various game scenarios such as busts and ties.
 
+### Getting Started
 
-### Getting started
-
-- Ensure you can run the provided code. 
-    - If you have Python 3 installed:
-        - Open a terminal window and navigate to the folder containing this `README.md`.
-        - Type `python3 blackjack.py`
-        - Look for a welcome message in the console.
-    - If that doesn't work, check your setup and download Python 3 if needed:
-        - https://wiki.python.org/moin/BeginnersGuide/Download
-- Ensure you can run the unit tests.
-    - From the same terminal window, type `python3 -m unittest discover test`.
-    - Python should find and run the one provided failing test, with the message `AssertionError: 0 != 52`
-    
-
-### Adding to the starter code
-
-- A great place to start is by making the provided unit test pass.
-    - The provided Deck class has an empty array, `self.cards`.
-    - The test will pass if `self.cards` on line 3 of `deck.py` contains 52 things.
-    - once this test passes, extend the test or add more tests.
-    - e.g. the first test only ensures a Deck has 52 of _something_- what else might you want to test?
-- A TDD (test-driven development) approach can be useful:
-    - write a failing test that describes what you want your code to do
-        - e.g. 'a deck should have 4 aces'
-    - modify the code that you're testing so that the test passes
-        - e.g. the deck actually *has* 4 aces!
-    - each of the scenarios in the brief can be turned into a single test
-- You can add more test files:
-    - keep them in the `test/` directory
-    - make sure they have filenames beginning with `test`
-    - make sure test methods within those files also begin with `test`
-- You can add more source files:
-    - keep them in the `src/` directory
-- You can use any approach you want
-    - The provided code hints at an object-oriented approach (since we have a Deck class)
-    - if you wanted to extend this approach, you might want to create classes for Hand, Card, Dealer, etc.
-
-
-### Disregarding the starter code
-
-- As stated above you, can use any language or framework you prefer to solve this challenge.
-- If you prefer not to use the starter code, let us know in your submission how to run it.
+- Ensure that you have Python 3 installed on your system.
   
-  
-### Completing the task
+- Clone or download the repository, and navigate to the folder containing the code. You should have the following files:
+    - `deck.py`
+    - `card.py`
+    - `hand.py`
+    - `player.py`
+    - `game.py`
+    - `play.py`
+    - `test/` (containing unit tests)
 
-- Remember, the task is to write code that accurately scores a hand of blackjack, *not* to make a whole game
-- This means you *don't* need to have a running program to complete this test
-    - You can just prove your code works with unit tests
-    - You *don't* need to add anything to `blackjack.py` to do this.
-- You can *choose* to make a running program that demonstrates that your code works
-    - If you want to do this, you can extend the `play` method of `blackjack.py`
-    - This method is the entry point when you do `python3 blackjack.py`.
+- To run the Blackjack game:
+    - Open the terminal, navigate to the folder containing the `blackjack.py` file.
+    - Run the command `python3 blackjack.py` to start a game with 2 players (you can modify the number of players in the script).
+
+- To run the tests:
+    - Ensure the `test/` directory contains test files for the game logic.
+    - In the terminal, navigate to the project folder and run `python3 -m unittest discover test` to execute the tests.
+
+### Key Components
+
+- **Deck**: Represents a deck of 52 cards, including functionality to shuffle and deal cards.
+- **Card**: Represents a single card in the deck, with a rank and suit.
+- **Hand**: Represents the collection of cards a player holds and calculates their hand's total value.
+- **Player**: Represents a player in the game, with methods for taking actions (hit) and tracking if the player is bust.
+- **Game**: Manages the game flow, handles player turns, determines the winner, and checks if the game is over.
+
+### Game Flow
+
+1. The game begins by dealing 2 cards to each player from the deck.
+2. Players take turns where they can either:
+    - **Hit** (draw a card from the deck)
+    - **Stand** (end their turn and move to the next player)
+3. If a player exceeds 21 points, they are **bust** and automatically lose.
+4. The game ends once all players have either stood or busted. The winner is determined based on the highest total hand value (without exceeding 21).
+
+### Example Game Run
+
+```text
+Player 1's turn
+10 of Hearts, 7 of Diamonds
+Total: 17
+Enter 'hit' to draw a card or 'stand' to end your turn: hit
+Player 1 drew a 5 of Clubs. Total is now 22.
+Player 1 is bust!
+
+Player 2's turn
+10 of Spades, 6 of Hearts
+Total: 16
+Enter 'hit' to draw a card or 'stand' to end your turn: stand
+Player 2 stands with a total of 16.
+
+Game over!
+Winner(s): Player 2 with a score of 16.
